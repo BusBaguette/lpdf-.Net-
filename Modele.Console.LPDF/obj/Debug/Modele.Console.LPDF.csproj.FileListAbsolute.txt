@@ -15,3 +15,6 @@ C:\Users\jotot\OneDrive\Bureau\.net\LPDF.PAYS.BERTRAND\Modele.Console.LPDF\obj\D
 C:\Users\jotot\OneDrive\Bureau\.net\LPDF.PAYS.BERTRAND\Modele.Console.LPDF\obj\Debug\Modele.Console.LPDF.csproj.CopyComplete
 C:\Users\jotot\OneDrive\Bureau\.net\LPDF.PAYS.BERTRAND\Modele.Console.LPDF\obj\Debug\Modele.Console.LPDF.exe
 C:\Users\jotot\OneDrive\Bureau\.net\LPDF.PAYS.BERTRAND\Modele.Console.LPDF\obj\Debug\Modele.Console.LPDF.pdb
+C:\Users\jotot\OneDrive\Bureau\.net\LPDF.PAYS.BERTRAND\Modele.Console.LPDF\bin\Debug\BusinessLayer.dll
+C:\Users\jotot\OneDrive\Bureau\.net\LPDF.PAYS.BERTRAND\Modele.Console.LPDF\bin\Debug\BusinessLayer.pdb
+C:\Users\jotot\OneDrive\Bureau\.net\LPDF.PAYS.BERTRAND\Modele.Console.LPDF\bin\Debug\BusinessLayer.dll.config

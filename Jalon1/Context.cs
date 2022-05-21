@@ -25,7 +25,7 @@ namespace Jalon1
 
         public DbSet<Editeur> Editeurs { get; set; }
         public DbSet<Evaluation> Evaluations { get; set; }
-        public DbSet<Experience> Experience { get; set; }
+        public DbSet<Experience> Experiences { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Jeu> Jeux { get; set; }
     }
