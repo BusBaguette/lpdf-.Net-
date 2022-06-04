@@ -1,4 +1,6 @@
-﻿using Jalon1.Entities;
+﻿using BusinessLayer;
+using Jalon1;
+using Jalon1.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,10 @@ namespace AppWpf.ViewModels
         private int _idEditeur;
         private int _idGenre;
         private string _nom;
+
+        private string _nomEditeur;
+
+        private string _nomGenre;
         //private RelayCommand _addOperation;
 
         #endregion
@@ -34,6 +40,12 @@ namespace AppWpf.ViewModels
             _idEditeur = p.IdEditeur;
             _idGenre = p.IdGenre;
             _nom = p.Nom;
+
+            Editeur e = Manager.Instance.GetEditeurById(p.IdEditeur);
+            _nomEditeur = e.Nom;
+
+            Genre g = Manager.Instance.GetGenreById(p.IdGenre);
+            _nomGenre = g.Nom;
         }
 
         #endregion
@@ -63,6 +75,18 @@ namespace AppWpf.ViewModels
         {
             get { return _datesortie; }
             set { _datesortie = value; }
+        }
+
+        public string NomEditeur
+        {
+            get { return _nomEditeur; }
+            set { _nomEditeur = value; }
+        }
+
+        public string NomGenre
+        {
+            get { return _nomGenre; }
+            set { _nomGenre = value; }
         }
 
         #endregion

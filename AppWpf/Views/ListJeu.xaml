@@ -11,13 +11,15 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.4*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
+
+
         <ListView Grid.Column="0"  Grid.Row="0" Grid.RowSpan="3" Margin="5px" ItemsSource="{Binding Jeu, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedJeu, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
             <ListView.View>
                 <GridView>
@@ -26,5 +28,22 @@
             </ListView.View>
         </ListView>
         <uc:DetailJeu DataContext="{Binding SelectedJeu, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="3"></uc:DetailJeu>
+        <StackPanel Grid.Column="0" Grid.Row="4" >
+            <Label>Tri par Genre</Label>
+            <ComboBox ItemsSource="{Binding Genres}" 
+                  SelectedItem="{Binding SelectedGenre, UpdateSourceTrigger=PropertyChanged}"
+                  DisplayMemberPath="Nom"
+                  SelectedValuePath="Nom"/>
+        </StackPanel>
+
+
+        <StackPanel  Grid.Column="1" Grid.Row="4">
+            <Label>Tri par Editeur</Label>
+            <ComboBox ItemsSource="{Binding Editeurs}" 
+                  SelectedItem="{Binding SelectedEditeur, UpdateSourceTrigger=PropertyChanged}"
+                  DisplayMemberPath="Nom"
+                  SelectedValuePath="Nom"/>
+        </StackPanel>
+        
     </Grid>
 </UserControl>

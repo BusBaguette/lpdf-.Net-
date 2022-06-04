@@ -19,12 +19,22 @@ namespace BusinessLayer.Queries
 
         public IQueryable<Jeu> GetAll()
         {
-            return _context.Jeux;
+            return _context.Jeux.OrderBy(j => j.Nom);
+        }
+
+        public IQueryable<Jeu> GetAllByGenre(int genreId)
+        {
+            return _context.Jeux.Where(j => j.IdGenre == genreId);
+        }
+
+        public IQueryable<Jeu> GetAllByEditeur(int editeurId)
+        {
+            return _context.Jeux.Where(j => j.IdEditeur == editeurId);
         }
 
         public IQueryable<Jeu> GetByID(int id)
         {
-            return _context.Jeux.Where(p => p.Id == id);
+            return _context.Jeux.Where(j => j.Id == id);
         }
     }
 }

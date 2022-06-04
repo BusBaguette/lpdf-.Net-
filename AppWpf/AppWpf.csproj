@@ -67,6 +67,9 @@
     </ApplicationDefinition>
     <Compile Include="ViewModels\Common\BaseViewModel.cs" />
     <Compile Include="ViewModels\DetailJeuViewModel.cs" />
+    <Compile Include="ViewModels\EditeurViewModel.cs" />
+    <Compile Include="ViewModels\EvaluationViewModel.cs" />
+    <Compile Include="ViewModels\GenreViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\ListJeuViewModel.cs" />
     <Compile Include="Views\DetailJeu.xaml.cs">

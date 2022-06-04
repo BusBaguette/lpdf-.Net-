@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using Jalon1;
 using Jalon1.Entities;
 using System;
 using System.Collections.Generic;
@@ -15,17 +16,32 @@ namespace AppWpf.ViewModels
 
         private ObservableCollection<DetailJeuViewModel> _jeux = null;
         private DetailJeuViewModel _selectedJeu;
+        private ObservableCollection<EditeurViewModel> _editeurs = null;
+        private EditeurViewModel _selectedEditeur;
+        private ObservableCollection<GenreViewModel> _genres = null;
+        private GenreViewModel _selectedGenre;
 
         #endregion
 
         #region Constructeurs
         public ListJeuViewModel()
         {
-            // on appelle le mock pour initialiser une liste de produits
             _jeux = new ObservableCollection<DetailJeuViewModel>();
             foreach (Jeu j in Manager.Instance.GetAllJeu())
             {
                 _jeux.Add(new DetailJeuViewModel(j));
+            }
+
+            _genres = new ObservableCollection<GenreViewModel>();
+            foreach (Genre g in Manager.Instance.GetAllGenre())
+            {
+                _genres.Add(new GenreViewModel(g));
+            }
+
+            _editeurs = new ObservableCollection<EditeurViewModel>();
+            foreach (Editeur e in Manager.Instance.GetAllEditeur())
+            {
+                _editeurs.Add(new EditeurViewModel(e));
             }
 
             if (_jeux != null && _jeux.Count > 0)
@@ -36,22 +52,16 @@ namespace AppWpf.ViewModels
 
         #region Data Bindings
 
-        /// <summary>
-        /// Obtient ou définit une collection de DetailProduitViewModel (Observable)
-        /// </summary>
         public ObservableCollection<DetailJeuViewModel> Jeu
         {
             get { return _jeux; }
             set
             {
                 _jeux = value;
-                OnPropertyChanged("Jeux");
+                OnPropertyChanged("Jeu");
             }
         }
 
-        /// <summary>
-        /// Obtient ou défini le produit en cours de sélection dans la liste de DetailProduitViewModel
-        /// </summary>
         public DetailJeuViewModel SelectedJeu
         {
             get { return _selectedJeu; }
@@ -62,6 +72,57 @@ namespace AppWpf.ViewModels
             }
         }
 
+        public ObservableCollection<GenreViewModel> Genres
+        {
+            get { return _genres; }
+            set
+            {
+                _genres = value;
+                OnPropertyChanged("Genres");
+            }
+        }
+
+        public GenreViewModel SelectedGenre
+        {
+            get { return _selectedGenre; }
+            set
+            {
+                _selectedGenre = value;
+                _jeux.Clear();
+                foreach (Jeu j in Manager.Instance.GetAllJeuByGenre(_selectedGenre.IdGenre))
+                {
+                    _jeux.Add(new DetailJeuViewModel(j));
+                }
+                if (_jeux != null && _jeux.Count > 0)
+                    _selectedJeu = _jeux.ElementAt(0);
+            }
+        }
+
+        public ObservableCollection<EditeurViewModel> Editeurs
+        {
+            get { return _editeurs; }
+            set
+            {
+                _editeurs = value;
+                OnPropertyChanged("Editeurs");
+            }
+        }
+
+        public EditeurViewModel SelectedEditeur
+        {
+            get { return _selectedEditeur; }
+            set
+            {
+                _selectedEditeur = value;
+                _jeux.Clear();
+                foreach (Jeu j in Manager.Instance.GetAllJeuByEditeur(_selectedEditeur.IdEditeur))
+                {
+                    _jeux.Add(new DetailJeuViewModel(j));
+                }
+                if (_jeux != null && _jeux.Count > 0)
+                    _selectedJeu = _jeux.ElementAt(0);
+            }
+        }
 
         #endregion
     }
