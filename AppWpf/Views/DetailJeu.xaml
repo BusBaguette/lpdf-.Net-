@@ -22,21 +22,43 @@
 
         <Label Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Stretch" Background="AliceBlue" FontWeight="Bold">Detail du jeu</Label>
 
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Vertical">
-            <Label>Nom du produit</Label>
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Margin="5">
+            <Label FontWeight="Bold">Nom du produit :</Label>
             <TextBox Text="{Binding Nom}"></TextBox>
-            <Label>Description</Label>
+            <Label FontWeight="Bold">Description :</Label>
             <TextBox Text="{Binding Description}"></TextBox>
-            <Label>Date de sortie</Label>
+            <Label FontWeight="Bold">Date de sortie :</Label>
             <TextBox Text="{Binding Datedesortie}"></TextBox>
         </StackPanel>
 
-        <StackPanel Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Vertical">
-            <Label>Nom de l'éditeur</Label>
-            <TextBox Text="{Binding NomEditeur}"></TextBox>
-            <Label>Genre</Label>
-            <TextBox Text="{Binding NomGenre}"></TextBox>
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" Margin="5">
+            <Label FontWeight="Bold">Nom de l'éditeur :</Label>
+            <TextBlock Text="{Binding NomEditeur}"></TextBlock>
+            <Label FontWeight="Bold">Genre :</Label>
+            <TextBlock Text="{Binding NomGenre}"></TextBlock>
         </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Vertical" Margin="5">
+            <Label FontWeight="Bold">Nom de l'éditeur :</Label>
+            <ListView Margin="5px" ItemsSource="{Binding Evaluations, UpdateSourceTrigger=PropertyChanged}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <TextBlock Text="Nom evaluateur : " />
+                            <TextBlock Text="{Binding NomEvaluateur}" FontWeight="Bold" />
+                            <TextBlock Text=", " />
+                            <TextBlock Text="Note : " />
+                            <TextBlock Text="{Binding Note}" FontWeight="Bold" />
+                            <TextBlock Text=", " />
+                            <TextBlock Text="Date : " />
+                            <TextBlock Text="{Binding Date}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
+                            <TextBlock Text=")" />
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        
 
         <Label Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="AliceBlue" FontWeight="Bold">DERNIERES OPERATIONS</Label>
         <Button Grid.Column="3" Margin="5" Grid.Row="2" FontSize="12px">+</Button>

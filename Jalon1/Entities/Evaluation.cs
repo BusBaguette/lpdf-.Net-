@@ -23,6 +23,14 @@ namespace Jalon1.Entities
             this.Jeu = jeu;
         }
 
+        public Evaluation(string nomEvaluateur, DateTime date, int note, int idJeu)
+        {
+            NomEvaluateur = nomEvaluateur;
+            Date = date;
+            Note = note;
+            IdJeu = idJeu;
+        }
+
         public Evaluation()
         {
         }

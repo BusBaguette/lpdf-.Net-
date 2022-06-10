@@ -37,13 +37,14 @@
         </StackPanel>
 
 
-        <StackPanel  Grid.Column="1" Grid.Row="4">
+        <StackPanel Grid.Column="1" Grid.Row="4">
             <Label>Tri par Editeur</Label>
             <ComboBox ItemsSource="{Binding Editeurs}" 
                   SelectedItem="{Binding SelectedEditeur, UpdateSourceTrigger=PropertyChanged}"
                   DisplayMemberPath="Nom"
                   SelectedValuePath="Nom"/>
         </StackPanel>
-        
+
+        <Button Grid.Column="2" Grid.Row="3" Margin="0,21,0,10" Command="{Binding ResetOperation}">Reset tri</Button>
     </Grid>
 </UserControl>

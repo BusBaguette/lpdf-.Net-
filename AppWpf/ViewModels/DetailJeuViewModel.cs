@@ -3,6 +3,7 @@ using Jalon1;
 using Jalon1.Entities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,10 +20,13 @@ namespace AppWpf.ViewModels
         private int _idEditeur;
         private int _idGenre;
         private string _nom;
+        private Jeu _jeu;
 
         private string _nomEditeur;
 
         private string _nomGenre;
+
+        private ObservableCollection<EvaluationViewModel> _evaluations = null;
         //private RelayCommand _addOperation;
 
         #endregion
@@ -35,6 +39,7 @@ namespace AppWpf.ViewModels
         /// </summary>
         public DetailJeuViewModel(Jeu p)
         {
+            _jeu = p;
             _datesortie = p.Datedesortie;
             _description = p.Description;
             _idEditeur = p.IdEditeur;
@@ -46,6 +51,12 @@ namespace AppWpf.ViewModels
 
             Genre g = Manager.Instance.GetGenreById(p.IdGenre);
             _nomGenre = g.Nom;
+
+            _evaluations = new ObservableCollection<EvaluationViewModel>();
+            foreach (Evaluation eval in Manager.Instance.GetEvaluationByIdJeu(p.Id))
+            {
+                _evaluations.Add(new EvaluationViewModel(eval));
+            }
         }
 
         #endregion
@@ -54,39 +65,76 @@ namespace AppWpf.ViewModels
         public string Nom
         {
             get { return _nom; }
-            set { _nom = value; }
+            set 
+            {
+                _nom = value;
+                _jeu.Nom = _nom;
+                Manager.Instance.ModifierJeu(_jeu);
+            }
         }
         public string Description
         {
             get { return _description; }
-            set { _description = value; }
+            set 
+            { 
+                _description = value;
+                _jeu.Description = _description;
+                Manager.Instance.ModifierJeu(_jeu);
+            }
         }
         public int IdEditeur
         {
             get { return _idEditeur; }
-            set { _idEditeur = value; }
+            set 
+            { 
+                _idEditeur = value; 
+            }
         }
         public int IdGenre
         {
             get { return _idGenre; }
-            set { _idGenre = value; }
+            set 
+            {
+                _idGenre = value; 
+            }
         }
         public string Datedesortie
         {
             get { return _datesortie; }
-            set { _datesortie = value; }
+            set 
+            { 
+                _datesortie = value;
+                _jeu.Datedesortie = _datesortie;
+                Manager.Instance.ModifierJeu(_jeu);
+            }
         }
 
         public string NomEditeur
         {
             get { return _nomEditeur; }
-            set { _nomEditeur = value; }
+            set 
+            { 
+                _nomEditeur = value; 
+            }
         }
 
         public string NomGenre
         {
             get { return _nomGenre; }
-            set { _nomGenre = value; }
+            set 
+            { 
+                _nomGenre = value; 
+            }
+        }
+
+        public ObservableCollection<EvaluationViewModel> Evaluations
+        {
+            get { return _evaluations; }
+            set
+            {
+                _evaluations = value;
+                OnPropertyChanged("Eval");
+            }
         }
 
         #endregion

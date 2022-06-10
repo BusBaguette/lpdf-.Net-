@@ -1,4 +1,5 @@
-﻿using BusinessLayer;
+﻿using AppWpf.ViewModels.Common;
+using BusinessLayer;
 using Jalon1;
 using Jalon1.Entities;
 using System;
@@ -7,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace AppWpf.ViewModels
 {
@@ -20,6 +22,7 @@ namespace AppWpf.ViewModels
         private EditeurViewModel _selectedEditeur;
         private ObservableCollection<GenreViewModel> _genres = null;
         private GenreViewModel _selectedGenre;
+        private RelayCommand _resetList;
 
         #endregion
 
@@ -122,6 +125,31 @@ namespace AppWpf.ViewModels
                 if (_jeux != null && _jeux.Count > 0)
                     _selectedJeu = _jeux.ElementAt(0);
             }
+        }
+
+        #endregion
+
+
+        #region Commandes
+        public ICommand ResetOperation
+        {
+            get
+            {
+                if (_resetList == null)
+                    _resetList = new RelayCommand(() => this.ResetList());
+                return _resetList;
+            }
+        }
+
+        private void ResetList()
+        {
+            _jeux.Clear();
+            foreach (Jeu j in Manager.Instance.GetAllJeu())
+            {
+                _jeux.Add(new DetailJeuViewModel(j));
+            }
+            if (_jeux != null && _jeux.Count > 0)
+                _selectedJeu = _jeux.ElementAt(0);
         }
 
         #endregion

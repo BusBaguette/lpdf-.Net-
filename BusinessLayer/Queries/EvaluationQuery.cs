@@ -26,5 +26,10 @@ namespace BusinessLayer.Queries
         {
             return _context.Evaluations.Where(e => e.Id == id);
         }
+
+        public IQueryable<Evaluation> GetByIdJeu(int idJeu)
+        {
+            return _context.Evaluations.Where(e => e.IdJeu == idJeu);
+        }
     }
 }

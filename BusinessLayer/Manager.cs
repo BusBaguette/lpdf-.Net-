@@ -157,6 +157,12 @@ namespace BusinessLayer
             return eq.GetAll().ToList();
         }
 
+        public List<Evaluation> GetEvaluationByIdJeu(int idJeu)
+        {
+            EvaluationQuery eq = new EvaluationQuery(context);
+            return eq.GetByIdJeu(idJeu).ToList();
+        }
+
         public int AjouterEvaluation(Evaluation e)
         {
             // TODO : ajouter des contrôles sur le produit (exemple : vérification de champ, etc.)
