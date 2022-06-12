@@ -1,0 +1,47 @@
+﻿@using AppMVC.Models
+@model JeuViewModel
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Jeu</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nom)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Nom)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Datedesortie)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Datedesortie)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IdEditeur)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Editeurs", "Select éditeur")
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IdGenre)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Genres", "Select genre")
+        </div>
+
+
+        <input type="submit" value="Créer le jeu" />
+    </fieldset>
+}

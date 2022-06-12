@@ -36,6 +36,16 @@ namespace Jalon1.Entities
             IdGenre = idGenre;
         }
 
+        public Jeu(int id, string nom, string description, string datedesortie, int idEditeur, int idGenre)
+        {
+            Id = id;
+            Nom = nom;
+            Description = description;
+            Datedesortie = datedesortie;
+            IdEditeur = idEditeur;
+            IdGenre = idGenre;
+        }
+
         public Jeu()
         {
         }
