@@ -28,17 +28,17 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.IdEditeur)
+            @Html.LabelFor(model => model.Editeur)
         </div>
         <div class="editor-field">
-            @Html.DropDownList("Editeurs", "Select éditeur")
+            @Html.DropDownList("IdEditeur", new SelectList(ViewBag.Editeurs, "Value", "Text"))
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.IdGenre)
+            @Html.LabelFor(model => model.Genre)
         </div>
         <div class="editor-field">
-            @Html.DropDownList("Genres", "Select genre")
+            @Html.DropDownList("IdGenre", new SelectList(ViewBag.Genres, "Value", "Text"))
         </div>
 
 
