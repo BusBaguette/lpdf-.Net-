@@ -82,6 +82,34 @@ namespace AppMVC.Controllers
         [HttpGet]
         public ActionResult EditJeu(int id)
         {
+            #region ViewBag
+            List<EditeurViewModel> listEditeurs = Manager.Instance.GetAllEditeur().Select(e => new EditeurViewModel(e)).ToList();
+            List<SelectListItem> editeursSelectedItems = new List<SelectListItem>();
+            foreach (var e in listEditeurs)
+            {
+                editeursSelectedItems.Add(new SelectListItem
+                {
+                    Text = e.Nom,
+                    Value = e.Id.ToString()
+                });
+            }
+
+            ViewBag.Editeurs = editeursSelectedItems;
+
+            List<GenreViewModel> listGenres = Manager.Instance.GetAllGenre().Select(e => new GenreViewModel(e)).ToList();
+            List<SelectListItem> genresSelectedItems = new List<SelectListItem>();
+            foreach (var g in listGenres)
+            {
+                genresSelectedItems.Add(new SelectListItem
+                {
+                    Text = g.Nom,
+                    Value = g.Id.ToString()
+                });
+            }
+
+            ViewBag.Genres = genresSelectedItems;
+            #endregion
+
             JeuViewModel jeu = new JeuViewModel(Manager.Instance.GetJeuById(id));
             jeu.Editeur = new EditeurViewModel(Manager.Instance.GetEditeurById(jeu.IdEditeur));
             jeu.Genre = new GenreViewModel(Manager.Instance.GetGenreById(jeu.IdGenre));

@@ -1,99 +1,112 @@
 ﻿@using AppMVC.Models
 @model List<JeuViewModel>
 
-<div class="container">
-    <div class="text">
-        <h3>Liste des jeux:</h3>
-    </div>
+    <div class="container">
+        <div class="text">
+            <h3>Liste des jeux:</h3>
+        </div>
 
-    <div class="d-flex justify-content-around flex-wrap">
-        @foreach (var jeu in Model)
-        {
-            <div class="card m-3 shadow" style="width: 18rem; cursor: pointer" onclick="showDetailJeu(@jeu.Id)">
-                <div class="card-body">
-                    <h5 class="card-title">@jeu.Nom</h5>
-                    <p class="card-text">@jeu.Description</p>
-                </div>
-                <div class="card-footer text-muted">
-                    @jeu.Datedesortie
-                </div>
-            </div>
-        }
-    </div>
+        <button type="button" class="btn btn-primary" onclick="showAddJeu()">Ajouter un jeu</button>
 
-    <button type="button" class="btn btn-primary" onclick="showAddJeu()">Close</button>
 
-    <!-- Detail jeu Modal -->
-    <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true" data-url='@Url.Action("DetailJeu")'>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="detailModalLabel">Detail Jeu</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="d-flex justify-content-around flex-wrap">
+            @foreach (var jeu in Model)
+            {
+                <div class="card m-3 shadow" style="width: 18rem; cursor: pointer" onclick="showDetailJeu(@jeu.Id)">
+                    <div class="card-body">
+                        <h5 class="card-title">@jeu.Nom</h5>
+                        <p class="card-text">@jeu.Description</p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        @jeu.Datedesortie
+                        <button type="button" class="btn btn-primary" onclick="showEditJeu(@jeu.Id)">Edit</button>
+                    </div>
                 </div>
-                <div class="modal-body" id="bodyDetailJeu">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            }
+        </div>
+
+
+        <!-- Detail jeu Modal -->
+        <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true" data-url='@Url.Action("DetailJeu")'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="detailModalLabel">Detail Jeu</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="bodyDetailJeu">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Ajout jeu Modal -->
-    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true" data-url='@Url.Action("AddJeu")'>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addModalLabel">Ajouter Jeu</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="bodyAddJeu">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modifier jeu Modal -->
-    <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true" data-url='@Url.Action("DetailJeu")'>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detail Jeu</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="bodyDetailJeu">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- Ajout jeu Modal -->
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true" data-url='@Url.Action("AddJeu")'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">Ajouter Jeu</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="bodyAddJeu">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- Modifier jeu Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true" data-url='@Url.Action("EditJeu")'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="detailModalLabel">Detail Jeu</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="bodyEditJeu">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            function showDetailJeu(idJeu) {
+                let url = $('#detailModal').data('url');
+                url = url + '/' + idJeu;
+                $.get(url, function (data) {
+                    $('#bodyDetailJeu').html(data);
+
+                    $('#detailModal').modal('show');
+                });
+            }
+
+            function showAddJeu() {
+                let url = $('#addModal').data('url');
+                $.get(url, function (data) {
+                    $('#bodyAddJeu').html(data);
+
+                    $('#addModal').modal('show');
+                });
+            }
+
+            function showEditJeu(idJeu) {
+                let url = $('#editModal').data('url');
+                url = url + '/' + idJeu;
+                $.get(url, function (data) {
+                    $('#bodyEditJeu').html(data);
+
+                    $('#editModal').modal('show');
+                });
+            }
+        </script>
     </div>
-
-
-    <script>
-        function showDetailJeu(idJeu) {
-            let url = $('#detailModal').data('url');
-            url = url + '/' + idJeu;
-            $.get(url, function (data) {
-                $('#bodyDetailJeu').html(data);
-
-                $('#detailModal').modal('show');
-            });
-        }
-
-        function showAddJeu() {
-            let url = $('#addModal').data('url');
-            $.get(url, function (data) {
-                $('#bodyAddJeu').html(data);
-
-                $('#addModal').modal('show');
-            });
-        }
-    </script>
-</div>
 

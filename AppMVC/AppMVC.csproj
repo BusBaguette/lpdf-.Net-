@@ -214,6 +214,7 @@
     <Content Include="Views\Jeu\Jeu.cshtml" />
     <Content Include="Views\Jeu\DetailJeu.cshtml" />
     <Content Include="Views\Jeu\AddJeu.cshtml" />
+    <Content Include="Views\Jeu\EditJeu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
