@@ -1,21 +1,40 @@
 ﻿@using AppMVC.Models
 @model JeuViewModel
 
-<div class="card m-3 shadow">
-    <div class="card-body">
-        <h5 class="card-title">Jeu</h5>
-        <p id="nomJeu" class="card-text">@Model.Nom</p>
-        <p id="descriptionJeu" class="card-text">@Model.Description</p>
-        <p id="dateJeu" class="card-text">@Model.Datedesortie</p>
+<div class="container">
+    <div class="card border-0">
+        <div class="card-body">
+            <h5 class="card-title">Jeu</h5>
+            <p id="nomJeu" class="card-text">@Model.Nom</p>
+            <p id="descriptionJeu" class="card-text">@Model.Description</p>
+            <p id="dateJeu" class="card-text">@Model.Datedesortie</p>
+        </div>
+
+        <div class="card-body">
+            <h5 class="card-title">Editeur</h5>
+            <p id="nomEditeur" class="card-text">@Model.Editeur.Nom</p>
+        </div>
+
+        <div class="card-body">
+            <h5 class="card-title">Genre</h5>
+            <p id="nomGenre" class="card-text">@Model.Genre.Nom</p>
+        </div>
+    </div>
+    <div id="eval">
+
     </div>
 
-    <div class="card-body">
-        <h5 class="card-title">Editeur</h5>
-        <p id="nomEditeur" class="card-text">@Model.Editeur.Nom</p>
-    </div>
-
-    <div class="card-body">
-        <h5 class="card-title">Genre</h5>
-        <p id="nomGenre" class="card-text">@Model.Genre.Nom</p>
-    </div>
+    <script>
+        $(document).ready(function () {
+            let url = "@Url.Action("EvaluationsGame", "Evaluation")";
+            url = url + '/' + @Model.Id;
+            $.get(url, function (data) {
+                $('#eval').html(data);
+            });
+        });
+    </script>
 </div>
+
+
+
+

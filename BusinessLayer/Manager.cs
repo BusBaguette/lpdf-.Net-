@@ -15,7 +15,7 @@ namespace BusinessLayer
         private readonly Context context;
         private static Manager _manager = null;
 
-        public Manager()
+        private Manager()
         {
             context = new Context();
         }
@@ -41,7 +41,7 @@ namespace BusinessLayer
         public Editeur GetEditeurById(int id)
         {
             EditeurQuery pq = new EditeurQuery(context);
-            return pq.GetByID(id).ToList().First();
+            return pq.GetByID(id).First();
         }
 
         public int AjouterEditeur(Editeur e)

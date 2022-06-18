@@ -31,7 +31,16 @@ namespace AppMVC.Controllers
             JeuViewModel jeu = new JeuViewModel(Manager.Instance.GetJeuById(id));
             jeu.Editeur = new EditeurViewModel(Manager.Instance.GetEditeurById(jeu.IdEditeur));
             jeu.Genre = new GenreViewModel(Manager.Instance.GetGenreById(jeu.IdGenre));
-            return PartialView("DetailJeu", jeu);
+            return View("DetailJeu", jeu);
+        }
+
+        //Find
+        [HttpGet]
+        public ActionResult FindJeu(string nom)
+        {
+            List<JeuViewModel> list = Manager.Instance.GetAllJeu().Where(jeu => jeu.Nom.ToLower().Contains(nom.ToLower())).Select(jeu => new JeuViewModel(jeu)).ToList();
+        
+            return View("RechercheJeu", list);
         }
 
         //Add
@@ -75,7 +84,7 @@ namespace AppMVC.Controllers
         public ActionResult AddJeu(JeuViewModel jeuViewModel)
         {
             Manager.Instance.AjouterJeu(new Jeu(jeuViewModel.Nom, jeuViewModel.Description, jeuViewModel.Datedesortie, jeuViewModel.IdEditeur, jeuViewModel.IdGenre));
-            return Redirect("Jeu");
+            return Redirect("Jeux");
         }
 
         //Edit
@@ -117,10 +126,10 @@ namespace AppMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult PostEditJeu(int id, JeuViewModel jeuViewModel)
+        public ActionResult EditJeu(JeuViewModel jeuViewModel)
         {
-            Manager.Instance.ModifierJeu(new Jeu(id, jeuViewModel.Nom, jeuViewModel.Description, jeuViewModel.Datedesortie, jeuViewModel.IdEditeur, jeuViewModel.IdGenre));
-            return Redirect("Jeu");
+            Manager.Instance.ModifierJeu(new Jeu(jeuViewModel.Id, jeuViewModel.Nom, jeuViewModel.Description, jeuViewModel.Datedesortie, jeuViewModel.IdEditeur, jeuViewModel.IdGenre));
+            return Redirect("Jeux");
         }
 
 

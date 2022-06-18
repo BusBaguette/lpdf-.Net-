@@ -6,42 +6,43 @@
     <fieldset>
         <legend>Jeu</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Nom)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.Nom)
+        @Html.HiddenFor(model => model.Id)
+
+
+        <div class="form-group mt-3">
+            <label for="nom">@Html.LabelFor(model => model.Nom)</label>
+            @Html.TextBoxFor(model => model.Nom, new { @class = "form-control" })
         </div>
 
-        <div class="editor-label">
+        <div class="editor-label mt-3">
             @Html.LabelFor(model => model.Description)
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.Description)
+            @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Datedesortie)
+        <div class="editor-label mt-3">
+            @Html.LabelFor(model => model.Datedesortie, new { @class = "" }, "Date de sortie")
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.Datedesortie)
+            @Html.TextBoxFor(model => model.Datedesortie, new { @class = "form-control" })
         </div>
 
-        <div class="editor-label">
+        <div class="editor-label mt-3">
+            @Html.LabelFor(model => model.Editeur)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("IdEditeur", new SelectList(ViewBag.Editeurs, "Value", "Text"), new { @class = "form-control" })
+        </div>
+
+        <div class="editor-label mt-3">
             @Html.LabelFor(model => model.Genre)
         </div>
         <div class="editor-field">
-            @Html.DropDownList("IdEditeur", new SelectList(ViewBag.Editeurs, "Value", "Text"))
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Genre)
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("IdGenre", new SelectList(ViewBag.Genres, "Value", "Text"))
+            @Html.DropDownList("IdGenre", new SelectList(ViewBag.Genres, "Value", "Text"), new { @class = "form-control" })
         </div>
 
 
-        <input type="submit" value="Créer le jeu" />
+        <input class="btn mt-5 btn-primary" type="submit" value="Modifier" />
     </fieldset>
 }

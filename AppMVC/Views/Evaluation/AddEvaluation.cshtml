@@ -1,0 +1,33 @@
+﻿@using AppMVC.Models
+@model EvaluationViewModel
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Evaluation</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NomEvaluateur)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.NomEvaluateur)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Date, new { type = "date" })
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Note)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Note)
+        </div>
+
+
+        <input type="submit" value="Créer l'évaluation" />
+    </fieldset>
+}

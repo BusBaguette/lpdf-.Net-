@@ -1,0 +1,52 @@
+﻿@using AppMVC.Models
+@model JeuViewModel
+
+<div class="container">
+    <div class="text">
+        <h3>Liste des Evals:</h3>
+    </div>
+
+    <button type="button" class="btn btn-primary" onclick="showAddEval(@Model.Id)">Ajouter une Eval</button>
+
+
+    <div class="d-flex flex-column mt-5 align-items-center">
+        @foreach (var eval in Model.Evaluations)
+        {
+            <div class="d-flex p-3 w-75 shadow-sm bg-white justify-content-between">
+                <div class="fs-3">@eval.NomEvaluateur</div>
+                <div class="fs-5">@eval.Note/20</div>
+                <div class="fs-5">@eval.Date</div>
+            </div>
+        }
+    </div>
+
+    <!-- Ajout jeu Modal -->
+    <div class="modal fade" id="addEvalModal" tabindex="-1" aria-labelledby="addEvalModalLabel" aria-hidden="true" data-url='@Url.Action("AddEvaluationGame")'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addEvalModalLabel">Ajouter Evaluation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="bodyAddEval">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+            function showAddEval(idJeu) {
+                let url = $('#addEvalModal').data('url');
+                url = url + '/' + idJeu;
+                $.get(url, function (data) {
+                    $('#bodyAddEval').html(data);
+
+                    $('#addEvalModal').modal('show');
+                });
+            }
+    </script>
+
+</div>

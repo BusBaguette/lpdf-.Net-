@@ -21,6 +21,10 @@ namespace AppMVC.Models
         public EditeurViewModel Editeur { get; set; }
         public GenreViewModel Genre { get; set; }
 
+        public List<EvaluationViewModel> Evaluations { get; set; }
+
+
+
         #endregion
 
         #region Constructeurs

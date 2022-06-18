@@ -1,0 +1,14 @@
+@using AppMVC.Models
+@model List<JeuViewModel>
+
+<div class="d-flex justify-content-center">
+    <div class="w-50" >
+        @foreach (var jeu in Model)
+        {
+        <div class=" mt-3 mb-3 p-4 shadow-sm rounded bg-white">
+            <div class="fs-3 text-decoration-underline">@jeu.Nom</div>
+            <p class="fs-5 mt-3">@jeu.Description</p>
+        </div>
+        }
+    </div>
+</div>
