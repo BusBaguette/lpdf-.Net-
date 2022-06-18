@@ -6,6 +6,8 @@
     <fieldset>
         <legend>Evaluation</legend>
 
+        @Html.HiddenFor(model => model.IdJeu)
+
         <div class="editor-label">
             @Html.LabelFor(model => model.NomEvaluateur)
         </div>

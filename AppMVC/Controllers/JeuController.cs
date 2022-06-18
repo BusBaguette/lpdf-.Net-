@@ -84,7 +84,7 @@ namespace AppMVC.Controllers
         public ActionResult AddJeu(JeuViewModel jeuViewModel)
         {
             Manager.Instance.AjouterJeu(new Jeu(jeuViewModel.Nom, jeuViewModel.Description, jeuViewModel.Datedesortie, jeuViewModel.IdEditeur, jeuViewModel.IdGenre));
-            return Redirect("Jeux");
+            return Redirect("/Jeu/Jeux/");
         }
 
         //Edit
@@ -129,7 +129,7 @@ namespace AppMVC.Controllers
         public ActionResult EditJeu(JeuViewModel jeuViewModel)
         {
             Manager.Instance.ModifierJeu(new Jeu(jeuViewModel.Id, jeuViewModel.Nom, jeuViewModel.Description, jeuViewModel.Datedesortie, jeuViewModel.IdEditeur, jeuViewModel.IdGenre));
-            return Redirect("Jeux");
+            return Redirect("/Jeu/Jeux/");
         }
 
 

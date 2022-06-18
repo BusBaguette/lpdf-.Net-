@@ -33,7 +33,7 @@ namespace AppMVC.Controllers
         public ActionResult AddEvaluationGame(EvaluationViewModel evaluationViewModel)
         {
             Manager.Instance.AjouterEvaluation(new Evaluation(evaluationViewModel.NomEvaluateur, evaluationViewModel.Date, evaluationViewModel.Note, evaluationViewModel.IdJeu));
-            return Redirect("Jeux");
+            return Redirect("/Jeu/DetailJeu/" + evaluationViewModel.IdJeu);
         }
     }
 }

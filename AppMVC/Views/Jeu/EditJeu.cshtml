@@ -22,10 +22,10 @@
         </div>
 
         <div class="editor-label mt-3">
-            @Html.LabelFor(model => model.Datedesortie, new { @class = "" }, "Date de sortie")
+            @Html.LabelFor(model => model.Datedesortie)
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.Datedesortie, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.Datedesortie, new { @class = "form-control", type = "date" })
         </div>
 
         <div class="editor-label mt-3">
