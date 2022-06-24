@@ -36,5 +36,30 @@ namespace BusinessLayer.Queries
         {
             return _context.Jeux.Where(j => j.Id == id);
         }
+
+        //Get last 5 Jeu sorted by date
+        public IQueryable<Jeu> GetLastBestJeu()
+        {
+            var top5jeux = _context.Evaluations.GroupBy(e => e.IdJeu)
+            .Select(g => new
+                {
+                    IdJeu = g.Key,
+                    Moyenne = g.Average(e => e.Note)
+                })
+            .OrderByDescending(g => g.Moyenne)
+            .Take(5);
+
+
+            var jeux = _context.Jeux
+            .Where(j => top5jeux.Any(t => t.IdJeu == j.Id))
+            .Select(j => new {
+                Moyenne = top5jeux.Where(t => t.IdJeu == j.Id).FirstOrDefault().Moyenne,
+                Jeu = j
+            })
+            .OrderByDescending(j => j.Moyenne)
+            .Select(j => j.Jeu);
+
+            return jeux;
+        }
     }
 }

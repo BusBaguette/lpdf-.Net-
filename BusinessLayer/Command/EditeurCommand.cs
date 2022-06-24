@@ -16,12 +16,18 @@ namespace BusinessLayer.Command
             this._context = context;
         }
 
+        /// <summary>
+        /// Ajoute un éditeur dans la base de données
+        /// </summary>
         public int Ajouter(Editeur p)
         {
             _context.Editeurs.Add(p);
             return _context.SaveChanges();
         }
 
+        /// <summary>
+        /// Modifie un éditeur de la base de données
+        /// </summary>
         public void Modifier(Editeur p)
         {
             Editeur upPrd = _context.Editeurs.Where(prd => prd.Id == p.Id).FirstOrDefault();
@@ -32,6 +38,9 @@ namespace BusinessLayer.Command
             _context.SaveChanges();
         }
 
+        /// <summary>
+        /// Supprime un éditeur de la base de données grace à son id
+        /// </summary>
         public void Supprimer(int editeurID)
         {
             Editeur delPrd = _context.Editeurs.Where(prd => prd.Id == editeurID).FirstOrDefault();

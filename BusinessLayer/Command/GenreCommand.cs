@@ -17,12 +17,18 @@ namespace BusinessLayer.Command
             this._context = context;
         }
 
+        /// <summary>
+        /// Ajoute un genre dans la base de données
+        /// </summary>
         public int Ajouter(Genre g)
         {
             _context.Genres.Add(g);
             return _context.SaveChanges();
         }
 
+        /// <summary>
+        /// Modifie un genre de la base de données
+        /// </summary>
         public void Modifier(Genre g)
         {
             Genre upGenre = _context.Genres.Where(gre => gre.Id == g.Id).FirstOrDefault();
@@ -33,6 +39,9 @@ namespace BusinessLayer.Command
             _context.SaveChanges();
         }
 
+        /// <summary>
+        /// Supprime un genre de la base de données grace à son id
+        /// </summary>
         public void Supprimer(int genreID)
         {
             Genre delGenre = _context.Genres.Where(prd => prd.Id == genreID).FirstOrDefault();

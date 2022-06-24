@@ -17,12 +17,18 @@ namespace BusinessLayer.Command
             this._context = context;
         }
 
+        /// <summary>
+        /// Ajoute une évaluation dans la base de données
+        /// </summary>
         public int Ajouter(Evaluation e)
         {
             _context.Evaluations.Add(e);
             return _context.SaveChanges();
         }
 
+        /// <summary>
+        /// Modifie une évaluation de la base de données
+        /// </summary>
         public void Modifier(Evaluation e)
         {
             Evaluation upEval = _context.Evaluations.Where(eval => eval.Id == e.Id).FirstOrDefault();
@@ -38,6 +44,9 @@ namespace BusinessLayer.Command
             _context.SaveChanges();
         }
 
+        /// <summary>
+        /// Supprime une évaluation de la base de données grâce à son id
+        /// </summary>
         public void Supprimer(int evaluationID)
         {
             Evaluation delEval = _context.Evaluations.Where(eval => eval.Id == evaluationID).FirstOrDefault();

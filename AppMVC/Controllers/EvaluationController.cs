@@ -11,6 +11,9 @@ namespace AppMVC.Controllers
 {
     public class EvaluationController : Controller
     {
+        /// <summary>
+        /// Affiche la page d'évaluation d'un jeu passé en paramètre
+        /// </summary>
         [HttpGet]
         public ActionResult EvaluationsGame(int id)
         {
@@ -21,6 +24,9 @@ namespace AppMVC.Controllers
             return PartialView("Evaluation", jeuViewModel);
         }
 
+        /// <summary>
+        /// Affiche la page de création d'une évaluation pour un jeu passé en paramètre
+        /// </summary>
         [HttpGet]
         public ActionResult AddEvaluationGame(int id)
         {
@@ -29,10 +35,20 @@ namespace AppMVC.Controllers
             return PartialView("AddEvaluation", evaluation);
         }
 
+        /// <summary>
+        /// Ajoute une évaluation passée en paramètre dans la base de données
+        /// </summary>
         [HttpPost]
         public ActionResult AddEvaluationGame(EvaluationViewModel evaluationViewModel)
         {
-            Manager.Instance.AjouterEvaluation(new Evaluation(evaluationViewModel.NomEvaluateur, evaluationViewModel.Date, evaluationViewModel.Note, evaluationViewModel.IdJeu));
+            if (evaluationViewModel.Note > 20 ) {
+                evaluationViewModel.Note = 20;
+            }
+            if (evaluationViewModel.Note < 0) {
+                evaluationViewModel.Note = 0;
+            }
+            
+            Manager.Instance.AjouterEvaluation(new Evaluation(evaluationViewModel.NomEvaluateur, DateTime.Now, evaluationViewModel.Note, evaluationViewModel.IdJeu));
             return Redirect("/Jeu/DetailJeu/" + evaluationViewModel.IdJeu);
         }
     }

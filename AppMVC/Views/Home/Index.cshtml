@@ -1,8 +1,49 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using AppMVC.Models
+
+@{
+    List<JeuViewModel> listeJeux = ViewBag.BestJeu;
+    List<EvaluationViewModel> listeEval = ViewBag.BestEval;
+
 }
 
 
-<div>
-  
+<div class="container">
+    <div class="d-flex justify-content-around flex-wrap">
+        @foreach (var jeu in listeJeux)
+        {
+            <div class="card m-5 shadow-sm w-25" style="cursor: pointer" onclick="showDetailJeu(@jeu.Id)">
+                <div class="card-body">
+                    <h5 class="card-title">@jeu.Nom</h5>
+                    <p class="card-text">@jeu.Description</p>
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            @jeu.Datedesortie
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="showEditJeu(event, @jeu.Id)">Edit</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="d-flex flex-column mt-5 align-items-center">
+        @foreach (var eval in listeEval)
+        {
+            <div class="d-flex p-3 w-75 shadow-sm bg-white justify-content-between">
+                <div class="fs-3">@eval.NomEvaluateur</div>
+                <div class="fs-5">@eval.Note/20</div>
+                <div class="fs-5">@eval.Date.ToString("dd/MM/yyyy")</div>
+            </div>
+        }
+    </div>
+
+    <script>
+        function showDetailJeu(idJeu) {
+            let url = "@Url.Action("DetailJeu", "Jeu")";
+            url = url + '/' + idJeu;
+            window.location = url
+        }
+    </script>
 </div>

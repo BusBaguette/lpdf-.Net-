@@ -16,7 +16,9 @@ namespace AppMVC.Controllers
             return View("Jeu");
         }
 
-        // GET: Jeu
+        /// <summary>
+        /// Affiche la liste des jeux
+        /// </summary>
         [HttpGet]
         public ActionResult Jeux()
         {
@@ -24,7 +26,9 @@ namespace AppMVC.Controllers
             return View("Jeu", list);
         }
 
-        //Detail
+        /// <summary>
+        /// Affiche les détails d'un jeu passé en paramètre
+        /// </summary>
         [HttpGet]
         public ActionResult DetailJeu(int id)
         {
@@ -34,7 +38,9 @@ namespace AppMVC.Controllers
             return View("DetailJeu", jeu);
         }
 
-        //Find
+        /// <summary>
+        /// Recherche un jeu par son nom passé en paramètre et l'affiche la liste des résultats
+        /// </summary>
         [HttpGet]
         public ActionResult FindJeu(string nom)
         {
@@ -43,7 +49,9 @@ namespace AppMVC.Controllers
             return View("RechercheJeu", list);
         }
 
-        //Add
+        /// <summary>
+        /// Affiche le formulaire de création d'un jeu
+        /// </summary>
         [HttpGet]
         public ActionResult AddJeu()
         {
@@ -80,6 +88,9 @@ namespace AppMVC.Controllers
             return PartialView("AddJeu", jeu);
         }
 
+        /// <summary>
+        /// Enregistre un jeu dans la base de données
+        /// </summary>
         [HttpPost]
         public ActionResult AddJeu(JeuViewModel jeuViewModel)
         {
@@ -87,7 +98,9 @@ namespace AppMVC.Controllers
             return Redirect("/Jeu/Jeux/");
         }
 
-        //Edit
+        /// <summary>
+        /// Affiche le formulaire de modification d'un jeu
+        /// </summary>
         [HttpGet]
         public ActionResult EditJeu(int id)
         {
@@ -125,6 +138,9 @@ namespace AppMVC.Controllers
             return PartialView("EditJeu", jeu);
         }
 
+        /// <summary>
+        /// Enregistre les modifications d'un jeu dans la base de données
+        /// </summary>
         [HttpPost]
         public ActionResult EditJeu(JeuViewModel jeuViewModel)
         {

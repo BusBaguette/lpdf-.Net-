@@ -31,5 +31,10 @@ namespace BusinessLayer.Queries
         {
             return _context.Evaluations.Where(e => e.IdJeu == idJeu);
         }
+
+        public IQueryable<Evaluation> GetLastEval()
+        {
+            return _context.Evaluations.OrderByDescending(e => e.Date).Take(5);
+        }
     }
 }

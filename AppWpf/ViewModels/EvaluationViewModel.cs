@@ -15,7 +15,6 @@ namespace AppWpf.ViewModels
         private string _nomEvaluateur;
         private DateTime _date;
         private int _note;
-        //private RelayCommand _addOperation;
         #endregion
 
         #region Constructeurs
@@ -48,33 +47,6 @@ namespace AppWpf.ViewModels
             get { return _note; }
             set { _note = value; }
         }
-
-        #endregion
-
-        #region Commandes
-
-        ///// <summary>
-        ///// Commande pour ouvrir la fenêtre pour ajouter une opération
-        ///// </summary>
-        //public ICommand AddOperation
-        //{
-        //    get
-        //    {
-        //        if (_addOperation == null)
-        //            _addOperation = new RelayCommand(() => this.ShowWindowOperation());
-        //        return _addOperation;
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Permet l'ouverture de la fenêtre
-        ///// </summary>
-        //private void ShowWindowOperation()
-        //{
-        //    Views.Operation operationWindow = new Views.Operation();
-        //    operationWindow.DataContext = this;
-        //    operationWindow.ShowDialog();
-        //}
 
         #endregion
     }

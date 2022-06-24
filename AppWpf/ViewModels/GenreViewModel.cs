@@ -40,32 +40,5 @@ namespace AppWpf.ViewModels
         }
 
         #endregion
-
-        #region Commandes
-
-        ///// <summary>
-        ///// Commande pour ouvrir la fenêtre pour ajouter une opération
-        ///// </summary>
-        //public ICommand AddOperation
-        //{
-        //    get
-        //    {
-        //        if (_addOperation == null)
-        //            _addOperation = new RelayCommand(() => this.ShowWindowOperation());
-        //        return _addOperation;
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Permet l'ouverture de la fenêtre
-        ///// </summary>
-        //private void ShowWindowOperation()
-        //{
-        //    Views.Operation operationWindow = new Views.Operation();
-        //    operationWindow.DataContext = this;
-        //    operationWindow.ShowDialog();
-        //}
-
-        #endregion
     }
 }

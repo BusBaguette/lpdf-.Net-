@@ -12,7 +12,7 @@
                     <a href="@Url.Action("Jeux", "Jeu")" class="nav-link fs-5 @(@Context.Request.Path ==  "/Jeu/Jeux" ? "active" : "")" aria-current="page">Jeux</a>
                 </li>
             </ul>
-            <form class="d-flex" action="/Jeu/FindJeu">
+            <form class="d-flex" action="@Url.Action("FindJeu", "Jeu")">
                 <input class="form-control me-2" id="search" type="search" placeholder="Search" aria-label="Search" name="nom">
                 <button class="btn btn-outline-success" type="submit" >Search</button>
             </form>

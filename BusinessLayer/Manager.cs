@@ -34,34 +34,69 @@ namespace BusinessLayer
 
         public List<Editeur> GetAllEditeur()
         {
-            EditeurQuery pq = new EditeurQuery(context);
-            return pq.GetAll().ToList();
+            try {
+                EditeurQuery editeurQuery = new EditeurQuery(context);
+                return editeurQuery.GetAll().ToList();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public Editeur GetEditeurById(int id)
         {
-            EditeurQuery pq = new EditeurQuery(context);
-            return pq.GetByID(id).First();
+            try {
+                EditeurQuery editeurQuery = new EditeurQuery(context);
+                return editeurQuery.GetByID(id).First();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
-        public int AjouterEditeur(Editeur e)
+        public int AjouterEditeur(Editeur e) 
         {
-            // TODO : ajouter des contrôles sur le produit (exemple : vérification de champ, etc.)
-            EditeurCommand ec = new EditeurCommand(context);
-            return ec.Ajouter(e);
+            try
+            {
+                EditeurCommand ec = new EditeurCommand(context);
+                return ec.Ajouter(e);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+           
         }
 
         public void ModifierEditeur(Editeur e)
         {
-            // TODO : ajouter des contrôles sur le produit (exemple : vérification de champ, etc.)
-            EditeurCommand ec = new EditeurCommand(context);
-            ec.Modifier(e);
+            try
+            {
+                EditeurCommand ec = new EditeurCommand(context);
+                ec.Modifier(e);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public void SupprimerEditeur(int editeurID)
         {
-            EditeurCommand ec = new EditeurCommand(context);
-            ec.Supprimer(editeurID);
+            try
+            {
+                EditeurCommand ec = new EditeurCommand(context);
+                ec.Supprimer(editeurID);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         #endregion
@@ -70,45 +105,105 @@ namespace BusinessLayer
 
         public List<Jeu> GetAllJeu()
         {
-            JeuQuery jq = new JeuQuery(context);
-            return jq.GetAll().ToList();
+            try {
+                JeuQuery jeuQuery = new JeuQuery(context);
+                return jeuQuery.GetAll().ToList();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public Jeu GetJeuById(int id)
         {
-            JeuQuery pq = new JeuQuery(context);
-            return pq.GetByID(id).ToList().First();
+            try {
+                JeuQuery jeuQuery = new JeuQuery(context);
+                return jeuQuery.GetByID(id).ToList().First();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public List<Jeu> GetAllJeuByGenre(int genreId)
         {
-            JeuQuery jq = new JeuQuery(context);
-            return jq.GetAllByGenre(genreId).ToList();
+            try {
+                JeuQuery jeuQuery = new JeuQuery(context);
+                return jeuQuery.GetAllByGenre(genreId).ToList();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public List<Jeu> GetAllJeuByEditeur(int editeurId)
         {
-            JeuQuery jq = new JeuQuery(context);
-            return jq.GetAllByEditeur(editeurId).ToList();
+            try {
+                JeuQuery jeuQuery = new JeuQuery(context);
+                return jeuQuery.GetAllByEditeur(editeurId).ToList();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public List<Jeu> GetLastBestJeu()
+        {
+            try {
+                JeuQuery jeuQuery = new JeuQuery(context);
+                return jeuQuery.GetLastBestJeu().ToList();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public int AjouterJeu(Jeu j)
         {
+            try
+            {
+                JeuCommand jc = new JeuCommand(context);
+                return jc.Ajouter(j);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
             // TODO : ajouter des contrôles sur le produit (exemple : vérification de champ, etc.)
-            JeuCommand jc = new JeuCommand(context);
-            return jc.Ajouter(j);
         }
 
         public void ModifierJeu(Jeu j)
         {
-            JeuCommand jc = new JeuCommand(context);
-            jc.Modifier(j);
+            try
+            {
+                JeuCommand jc = new JeuCommand(context);
+                jc.Modifier(j);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public void SupprimerJeu(int jeuID)
         {
-            JeuCommand jc = new JeuCommand(context);
-            jc.Supprimer(jeuID);
+            try
+            {
+                JeuCommand jc = new JeuCommand(context);
+                jc.Supprimer(jeuID);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         #endregion
@@ -117,34 +212,68 @@ namespace BusinessLayer
 
         public List<Genre> GetAllGenre()
         {
-            GenreQuery gq = new GenreQuery(context);
-            return gq.GetAll().ToList();
+            try {
+                GenreQuery genreQuery = new GenreQuery(context);
+                return genreQuery.GetAll().ToList();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public Genre GetGenreById(int id)
         {
-            GenreQuery pq = new GenreQuery(context);
-            return pq.GetByID(id).ToList().First();
+            try {
+                GenreQuery genreQuery = new GenreQuery(context);
+                return genreQuery.GetByID(id).ToList().First();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public int AjouterGenre(Genre g)
         {
-            // TODO : ajouter des contrôles sur le produit (exemple : vérification de champ, etc.)
-            GenreCommand gc = new GenreCommand(context);
-            return gc.Ajouter(g);
+            try
+            {
+                GenreCommand gc = new GenreCommand(context);
+                return gc.Ajouter(g);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public void ModifierGenre(Genre g)
         {
-            // TODO : ajouter des contrôles sur le produit (exemple : vérification de champ, etc.)
-            GenreCommand gc = new GenreCommand(context);
-            gc.Modifier(g);
+            try
+            {
+                GenreCommand gc = new GenreCommand(context);
+                gc.Modifier(g);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public void SupprimerGenre(int genreID)
         {
-            GenreCommand gc = new GenreCommand(context);
-            gc.Supprimer(genreID);
+            try
+            {
+                GenreCommand gc = new GenreCommand(context);
+                gc.Supprimer(genreID);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         #endregion
@@ -153,34 +282,82 @@ namespace BusinessLayer
 
         public List<Evaluation> GetAllEvaluation()
         {
-            EvaluationQuery eq = new EvaluationQuery(context);
-            return eq.GetAll().ToList();
+            try {
+                EvaluationQuery evaluationQuery = new EvaluationQuery(context);
+                return evaluationQuery.GetAll().ToList();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public List<Evaluation> GetEvaluationByIdJeu(int idJeu)
         {
-            EvaluationQuery eq = new EvaluationQuery(context);
-            return eq.GetByIdJeu(idJeu).ToList();
+            try {
+                EvaluationQuery evaluationQuery = new EvaluationQuery(context);
+                return evaluationQuery.GetByIdJeu(idJeu).ToList();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public List<Evaluation> GetLastEval()
+        {
+            try {
+                EvaluationQuery evaluationQuery = new EvaluationQuery(context);
+                return evaluationQuery.GetLastEval().ToList();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public int AjouterEvaluation(Evaluation e)
         {
+            try
+            {
+                EvaluationCommand ec = new EvaluationCommand(context);
+                return ec.Ajouter(e);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
             // TODO : ajouter des contrôles sur le produit (exemple : vérification de champ, etc.)
-            EvaluationCommand ec = new EvaluationCommand(context);
-            return ec.Ajouter(e);
         }
 
         public void ModifierEvaluation(Evaluation e)
         {
+            try
+            {
+                EvaluationCommand ec = new EvaluationCommand(context);
+                ec.Modifier(e);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
             // TODO : ajouter des contrôles sur le produit (exemple : vérification de champ, etc.)
-            EvaluationCommand ec = new EvaluationCommand(context);
-            ec.Modifier(e);
         }
 
         public void SupprimerEvaluation(int evaluationID)
         {
-            EvaluationCommand ec = new EvaluationCommand(context);
-            ec.Supprimer(evaluationID);
+            try
+            {
+                EvaluationCommand ec = new EvaluationCommand(context);
+                ec.Supprimer(evaluationID);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         #endregion
@@ -189,28 +366,58 @@ namespace BusinessLayer
 
         public List<Experience> GetAllExperience()
         {
-            ExperienceQuery eq = new ExperienceQuery(context);
-            return eq.GetAll().ToList();
+            try {
+                ExperienceQuery experienceQuery = new ExperienceQuery(context);
+                return experienceQuery.GetAll().ToList();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public int AjouterExperience(Experience e)
         {
+            try
+            {
+                ExperienceCommand ec = new ExperienceCommand(context);
+                return ec.Ajouter(e);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
             // TODO : ajouter des contrôles sur le produit (exemple : vérification de champ, etc.)
-            ExperienceCommand ec = new ExperienceCommand(context);
-            return ec.Ajouter(e);
         }
 
         public void ModifierExperience(Experience e)
         {
+            try
+            {
+                ExperienceCommand ec = new ExperienceCommand(context);
+                ec.Modifier(e);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
             // TODO : ajouter des contrôles sur le produit (exemple : vérification de champ, etc.)
-            ExperienceCommand ec = new ExperienceCommand(context);
-            ec.Modifier(e);
         }
 
         public void SupprimerExperience(int experienceID)
         {
-            ExperienceCommand ec = new ExperienceCommand(context);
-            ec.Supprimer(experienceID);
+            try
+            {
+                ExperienceCommand ec = new ExperienceCommand(context);
+                ec.Supprimer(experienceID);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         #endregion

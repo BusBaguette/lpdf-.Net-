@@ -8,7 +8,15 @@ namespace Jalon1
 {
     public class Editeur
     {
+        /// <summary>
+        /// Id de l'éditeur
+        /// Il est unique et est auto-incrémenté
+        /// </summary>
         public int Id { get; set; }
+
+        /// <summary>
+        /// Nom de l'éditeur
+        /// </summary>
         public String Nom { get; set; }
 
         public Editeur()

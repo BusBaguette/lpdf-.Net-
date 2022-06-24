@@ -17,12 +17,17 @@ namespace BusinessLayer.Command
             this._context = context;
         }
 
+        /// <summary>
+        /// Ajoute une experience dans la base de données
+        /// </summary>
         public int Ajouter(Experience e)
         {
             _context.Experiences.Add(e);
             return _context.SaveChanges();
         }
 
+        /// <summary>
+        /// Modifie une experience de la base de données
         public void Modifier(Experience e)
         {
             Experience upExp = _context.Experiences.Where(exp => exp.Id == e.Id).FirstOrDefault();
@@ -39,6 +44,9 @@ namespace BusinessLayer.Command
             _context.SaveChanges();
         }
 
+        /// <summary>
+        /// Supprime une experience de la base de données grace à son id
+        /// </summary>
         public void Supprimer(int experienceID)
         {
             Experience delExp = _context.Experiences.Where(exp => exp.Id == experienceID).FirstOrDefault();

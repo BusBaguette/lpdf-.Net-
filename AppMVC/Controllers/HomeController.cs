@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AppMVC.Models;
+using BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +12,15 @@ namespace AppMVC.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            List<JeuViewModel> bestJeu = Manager.Instance.GetLastBestJeu().Select(jeu => new JeuViewModel(jeu)).ToList();
+
+            List<EvaluationViewModel> bestEval = Manager.Instance.GetLastEval().Select(eval => new EvaluationViewModel(eval)).ToList();
+
+
+            ViewBag.BestJeu = bestJeu;
+            ViewBag.BestEval = bestEval;
+
+            return View("Index");
         }
 
         public ActionResult About()
