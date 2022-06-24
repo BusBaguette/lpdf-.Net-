@@ -17,11 +17,17 @@ namespace BusinessLayer.Queries
             _context = context;
         }
 
+        /// <summary>
+        /// Récupère toutes les expériences en BD
+        /// </summary>
         public IQueryable<Experience> GetAll()
         {
             return _context.Experiences;
         }
 
+        /// <summary>
+        /// Récupère une expérience par son id
+        /// </summary>
         public IQueryable<Experience> GetByID(int id)
         {
             return _context.Experiences.Where(e => e.Id == id);

@@ -17,27 +17,41 @@ namespace BusinessLayer.Queries
             _context = context;
         }
 
+        /// <summary>
+        /// Récupère tous les jeux en BD triés par leur nom par ordre alphabétique
+        /// </summary>
         public IQueryable<Jeu> GetAll()
         {
             return _context.Jeux.OrderBy(j => j.Nom);
         }
 
+        /// <summary>
+        /// Récupère tous les jeux par un id de genre en BD
+        /// </summary>
         public IQueryable<Jeu> GetAllByGenre(int genreId)
         {
             return _context.Jeux.Where(j => j.IdGenre == genreId);
         }
 
+        /// <summary>
+        /// Récupère tous les jeux par un id d'éditeur en BD
+        /// </summary>
         public IQueryable<Jeu> GetAllByEditeur(int editeurId)
         {
             return _context.Jeux.Where(j => j.IdEditeur == editeurId);
         }
 
+        /// <summary>
+        /// Récupère un jeu par son id en BD
+        /// </summary>
         public IQueryable<Jeu> GetByID(int id)
         {
             return _context.Jeux.Where(j => j.Id == id);
         }
 
-        //Get last 5 Jeu sorted by date
+        /// <summary>
+        /// Récupère les 5 jeux qui ont la plus haute moyenne de note de commentaire
+        /// </summary>
         public IQueryable<Jeu> GetLastBestJeu()
         {
             var top5jeux = _context.Evaluations.GroupBy(e => e.IdJeu)

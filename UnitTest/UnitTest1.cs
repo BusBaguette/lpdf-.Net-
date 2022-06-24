@@ -11,12 +11,10 @@ namespace UnitTest
     {
 
         [TestMethod]
-        public void TestAjoutGenre()
+        public void TestAddGenre()
         {
             Genre g = new Genre("wow");
-            var a = Manager.Instance.AjouterGenre(g);
-            Manager.Instance.SupprimerGenre(1);
-            Assert.IsTrue(a > 0);
+            Assert.IsTrue(Manager.Instance.AjouterGenre(g) > 0);
         }
 
         [TestMethod]
@@ -26,21 +24,19 @@ namespace UnitTest
             Manager.Instance.AjouterGenre(g);
             g.Nom = "arret";
             Manager.Instance.ModifierGenre(g);
-            var a = Manager.Instance.GetGenreById(g.Id).Nom;
-            Manager.Instance.SupprimerGenre(1);
 
-            Assert.IsTrue(a == "arret");
+            Assert.IsTrue(Manager.Instance.GetGenreById(g.Id).Nom == "arret");
 
         }
 
         [TestMethod]
         public void TestDeleteGenre()
         {
-            Genre g = new Genre("wow");
+            Genre g = new Genre("toto");
             Manager.Instance.AjouterGenre(g);
             Manager.Instance.SupprimerGenre(g.Id);
 
-            Assert.IsTrue(Manager.Instance.GetAllGenre().Count(genre => genre.Nom == "wow") == 0);
+            Assert.IsTrue(Manager.Instance.GetAllGenre().Count(genre => genre.Nom == "toto") == 0);
         }
 
         [TestMethod]
@@ -48,9 +44,7 @@ namespace UnitTest
         {
             Genre g = new Genre("wow");
             Manager.Instance.AjouterGenre(g);
-            var a = Manager.Instance.GetAllGenre().Count;
-            Manager.Instance.SupprimerGenre(1);
-            Assert.IsTrue(a > 0);
+            Assert.IsTrue(Manager.Instance.GetAllGenre().Count > 0);
         }
 
         [TestMethod]
@@ -58,9 +52,7 @@ namespace UnitTest
         {
             Genre g = new Genre("wow");
             Manager.Instance.AjouterGenre(g);
-            var a = Manager.Instance.GetGenreById(g.Id);
-            Manager.Instance.SupprimerGenre(1);
-            Assert.IsTrue(a == g);
+            Assert.IsTrue(Manager.Instance.GetGenreById(g.Id) == g);
         }
     }
 }

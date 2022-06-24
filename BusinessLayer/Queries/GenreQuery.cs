@@ -17,11 +17,17 @@ namespace BusinessLayer.Queries
             _context = context;
         }
 
+        /// <summary>
+        /// Récupère tous les genres en BD
+        /// </summary>
         public IQueryable<Genre> GetAll()
         {
             return _context.Genres;
         }
 
+        /// <summary>
+        /// Récupère un genre par son id en BD
+        /// </summary>
         public IQueryable<Genre> GetByID(int id)
         {
             return _context.Genres.Where(g => g.Id == id);

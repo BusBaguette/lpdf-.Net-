@@ -15,7 +15,6 @@ namespace AppWpf.ViewModels
 
         private string _nom;
         private int _idEditeur;
-        //private RelayCommand _addOperation;
 
         #endregion
 

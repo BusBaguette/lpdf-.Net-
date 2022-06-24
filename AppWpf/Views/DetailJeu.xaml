@@ -24,7 +24,7 @@
 
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Margin="5">
             <Label FontWeight="Bold">Nom du produit :</Label>
-            <TextBox Text="{Binding Nom}"></TextBox>
+            <TextBox Text="{Binding Nom, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBox>
             <Label FontWeight="Bold">Description :</Label>
             <TextBox Text="{Binding Description}"></TextBox>
             <Label FontWeight="Bold">Date de sortie :</Label>

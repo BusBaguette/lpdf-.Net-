@@ -17,12 +17,18 @@ namespace BusinessLayer.Command
             this._context = context;
         }
 
+        /// <summary>
+        /// Ajoute un jeu à la base de donnée
+        /// </summary>
         public int Ajouter(Jeu j)
         {
             _context.Jeux.Add(j);
             return _context.SaveChanges();
         }
 
+        /// <summary>
+        /// Permet de modifier un jeu présent en BD
+        /// </summary>
         public void Modifier(Jeu j)
         {
             Jeu upPrd = _context.Jeux.Where(prd => prd.Id == j.Id).FirstOrDefault();
@@ -37,6 +43,10 @@ namespace BusinessLayer.Command
             _context.SaveChanges();
         }
 
+        /// <summary>
+        /// Supprime un jeu présent en BD
+        /// </summary>
+        /// <param name="jeuID"></param>
         public void Supprimer(int jeuID)
         {
             Jeu delPrd = _context.Jeux.Where(prd => prd.Id == jeuID).FirstOrDefault();

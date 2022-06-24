@@ -27,7 +27,6 @@ namespace AppWpf.ViewModels
         private string _nomGenre;
 
         private ObservableCollection<EvaluationViewModel> _evaluations = null;
-        //private RelayCommand _addOperation;
 
         #endregion
 
@@ -107,6 +106,7 @@ namespace AppWpf.ViewModels
                 _datesortie = value;
                 _jeu.Datedesortie = _datesortie;
                 Manager.Instance.ModifierJeu(_jeu);
+                OnPropertyChanged("Jeux");
             }
         }
 
@@ -134,7 +134,7 @@ namespace AppWpf.ViewModels
             set
             {
                 _evaluations = value;
-                OnPropertyChanged("Eval");
+                OnPropertyChanged("Evals");
             }
         }
 

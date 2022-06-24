@@ -17,21 +17,33 @@ namespace BusinessLayer.Queries
             _context = context;
         }
 
+        /// <summary>
+        /// Récupère toutes les évaluations en BD
+        /// </summary>
         public IQueryable<Evaluation> GetAll()
         {
             return _context.Evaluations;
         }
 
+        /// <summary>
+        /// Récupère une évaluation par son id
+        /// </summary>
         public IQueryable<Evaluation> GetByID(int id)
         {
             return _context.Evaluations.Where(e => e.Id == id);
         }
 
+        /// <summary>
+        /// Récupère toutes les évalutions par un id de jeu
+        /// </summary>
         public IQueryable<Evaluation> GetByIdJeu(int idJeu)
         {
             return _context.Evaluations.Where(e => e.IdJeu == idJeu);
         }
 
+        /// <summary>
+        /// Récupère les 5 dernières évaluations enregistrées
+        /// </summary>
         public IQueryable<Evaluation> GetLastEval()
         {
             return _context.Evaluations.OrderByDescending(e => e.Date).Take(5);

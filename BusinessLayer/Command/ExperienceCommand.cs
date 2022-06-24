@@ -28,6 +28,7 @@ namespace BusinessLayer.Command
 
         /// <summary>
         /// Modifie une experience de la base de données
+        /// </summary>
         public void Modifier(Experience e)
         {
             Experience upExp = _context.Experiences.Where(exp => exp.Id == e.Id).FirstOrDefault();

@@ -17,8 +17,8 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
-        <DockPanel Background="Blue">
-            <Label VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="26" Foreground="White">Mon Application</Label>
+        <DockPanel Background="Green">
+            <Label VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="26" Foreground="White">Master-detail de jeux</Label>
         </DockPanel>
 
         <uc:ListJeu Grid.Row="1" DataContext="{Binding ListJeuViewModel}"></uc:ListJeu>

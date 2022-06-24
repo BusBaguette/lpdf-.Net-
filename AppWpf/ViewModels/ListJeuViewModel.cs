@@ -61,7 +61,7 @@ namespace AppWpf.ViewModels
             set
             {
                 _jeux = value;
-                OnPropertyChanged("Jeu");
+                OnPropertyChanged("Jeux");
             }
         }
 
